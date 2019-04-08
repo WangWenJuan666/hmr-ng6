@@ -1,0 +1,8 @@
+<div style="margin-bottom: 90px;">
+    <div echarts [options]="chartOption" (chartInit)="onChartInit($event)" class="charts"></div>
+    <div class="tgc">
+      <button nz-button [nzType]="dayType" (click) = 'dayEvent()'>日</button>
+      <button nz-button [nzType]="weekType" (click) = 'weekEvent()'>周</button>
+      <button nz-button [nzType]="monthType" (click) = 'monthEvent()'>月</button>
+    </div>
+  </div>

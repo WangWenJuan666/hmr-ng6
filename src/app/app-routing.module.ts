@@ -8,7 +8,6 @@ import { HomeComponent } from './home/home.component'
 
 // 导入守卫服务
 import { AuthGuard } from './auth.guard'
-
 const appRoutes: Routes = [
   {
     path: 'home',
@@ -18,6 +17,12 @@ const appRoutes: Routes = [
 
     // 子路由
     children: [
+      // { path: 'dashBoard', component : DashBoardComponent},
+      // dashBoard
+      {
+        path: 'dashBoard',
+        loadChildren: './dash-board/dash-board.module#DashBoardModule'
+      },
       {
         path: 'employee',
         loadChildren: './employees/employees.module#EmployeesModule'

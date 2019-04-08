@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
     // console.log('路由守卫')
 
     // 获取token
-    const token = localStorage.getItem('itcast-token')
+    const token = localStorage.getItem('token')
     if (!!token) {
       return true
     }

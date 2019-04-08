@@ -13,7 +13,6 @@ import { LoginForm } from './login.type'
 interface Token {
   token: string
 }
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -30,39 +29,34 @@ export class LoginComponent implements OnInit {
   submitForm(): void {
     const loginForm = this.loginForm
     const { controls } = loginForm
-
     for (const i in controls) {
       if (controls.hasOwnProperty(i)) {
         controls[i].markAsDirty()
         controls[i].updateValueAndValidity()
       }
     }
-
     // 判断验证是否成功
     if (!loginForm.valid) {
       console.log('验证失败')
       return
     }
-
     // console.log('验证成功', loginForm.value)
     const { userName, password } = loginForm.value
     const loginParams: LoginForm = {
       username: userName,
       password
     }
-
-    this.loginService.login(loginParams).subscribe((res: Token) => {
+    // this.loginService.login(loginParams).subscribe((res: Token) => {
       // console.log('登录成功', res)
       // 存储token
-      localStorage.setItem('itcast-token', res.token)
+      localStorage.setItem('token', '3ee3744c-4b70-42fb-a05d-5eff071ba8c4');
       this.router.navigate(['/home'])
-    })
+    // })
   }
-
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       userName: [
-        'zqran',
+        'wwj',
         [Validators.required, Validators.minLength(3), Validators.maxLength(6)]
       ],
       password: [

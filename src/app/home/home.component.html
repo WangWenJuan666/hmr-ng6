@@ -1,9 +1,16 @@
 <nz-layout class="home-wrapper">
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzCollapsedWidth]="0" [nzBreakpoint]="'sm'">
     <div class="logo">
-      <img src="/src/assets/heima-logo.png" alt="黑马程序员">
+      <img src="/src/assets/logo.gif" alt="黑马程序员">
     </div>
     <ul nz-menu [nzTheme]="'dark'" [nzMode]="isCollapsed?'vertical':'inline'">
+        <li nz-submenu>
+            <span title routerLink="/home/dashBoard"><i class="anticon anticon-user"></i>仪表盘</span>
+            <!-- <ul>
+              <li nz-menu-item routerLink="/home/employee">员工列表</li>
+              <li nz-menu-item routerLink="/home/employee/add">员工添加</li>
+            </ul> -->
+          </li>
       <li nz-submenu>
         <span title><i class="anticon anticon-user"></i>员工管理</span>
         <ul>
@@ -22,6 +29,14 @@
         <span title><i class="anticon anticon-lock"></i>权限管理</span>
         <ul>
           <li nz-menu-item>权限列表</li>
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title><i class="anticon anticon-lock"></i>个人中心</span>
+        <ul>
+          <li nz-menu-item></li>
+          <li nz-menu-item>个人信息</li>
+          <li nz-menu-item>个人信息</li>
         </ul>
       </li>
     </ul>

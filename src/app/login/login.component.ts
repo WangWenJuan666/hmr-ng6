@@ -50,7 +50,13 @@ export class LoginComponent implements OnInit {
       // console.log('登录成功', res)
       // 存储token
       localStorage.setItem('token', '3ee3744c-4b70-42fb-a05d-5eff071ba8c4');
-      this.router.navigate(['/home'])
+      const url = window.sessionStorage.getItem('beforeurl');
+      console.log(url, 'url');
+      if (url && (url.indexOf('home') !== -1) && (url.indexOf('login') !== -1)) {
+        this.router.navigate(['./' + url]);
+      } else {
+        this.router.navigate(['/home'])
+      }
     // })
   }
   ngOnInit(): void {

@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component'
 // 导入守卫服务
 import { AuthGuard } from './auth.guard'
 const appRoutes: Routes = [
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
   {
     path: 'home',
     component: HomeComponent,
@@ -21,11 +22,13 @@ const appRoutes: Routes = [
       // dashBoard
       {
         path: 'dashBoard',
-        loadChildren: './dash-board/dash-board.module#DashBoardModule'
+        loadChildren: './dash-board/dash-board.module#DashBoardModule',
+        canActivate: [AuthGuard]
       },
       {
         path: 'employee',
-        loadChildren: './employees/employees.module#EmployeesModule'
+        loadChildren: './employees/employees.module#EmployeesModule',
+        canActivate: [AuthGuard]
       }
     ]
   },

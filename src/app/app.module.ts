@@ -15,10 +15,13 @@ import { LoginComponent } from './login/login.component'
 import { HomeComponent } from './home/home.component'
 import { AppRoutingModule } from './/app-routing.module'
 
-import { AuthInterceptors } from './http-interceptors/auth.interceptor';
+import { AuthInterceptors } from './shared/http-interceptors/auth.interceptor';
 
 // ngx-echarts
 import { NgxEchartsModule } from 'ngx-echarts';
+
+// pipe
+import { PipeModule } from './shared/pipe/pipe.module';
 
 registerLocaleData(zh)
 
@@ -32,7 +35,8 @@ registerLocaleData(zh)
     NgZorroAntdModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    NgxEchartsModule
+    NgxEchartsModule,
+    PipeModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: zh_CN },

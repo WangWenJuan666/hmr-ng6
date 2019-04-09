@@ -7,7 +7,7 @@ import { LoginComponent } from './login/login.component'
 import { HomeComponent } from './home/home.component'
 
 // 导入守卫服务
-import { AuthGuard } from './auth.guard'
+import { AuthGuard } from './shared/guard/auth.guard'
 const appRoutes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {

@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // host: 'http://192.168.0.36:8080/', // 客户端-唐清伟
+  host: 'http://192.168.0.191:8080/', // 客户端-测试
+  // host: 'http://192.168.0.57:8080/', // 客户端-张
+  // host: 'http://52.184.37.2:8080/', // 生产
+  // host: 'http://127.0.0.1:4201/backend'
 };
 
 /*

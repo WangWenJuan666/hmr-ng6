@@ -29,6 +29,11 @@ const appRoutes: Routes = [
         path: 'employee',
         loadChildren: './employees/employees.module#EmployeesModule',
         canActivate: [AuthGuard]
+      },
+      {
+        path: 'ticket',
+        loadChildren: './ticket/ticket.module#TicketModule',
+        canActivate: [AuthGuard]
       }
     ]
   },

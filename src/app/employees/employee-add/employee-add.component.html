@@ -1,6 +1,6 @@
-<form nz-form [formGroup]="employeeAddForm" (ngSubmit)="submitForm($event)">
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm($event)">
   <!-- 姓名 -->
-  <nz-form-item>
+  <!-- <nz-form-item>
     <nz-form-label [nzSpan]="7" nzRequired>姓名</nz-form-label>
     <nz-form-control [nzSpan]="12" nzHasFeedback>
       <input nz-input formControlName="name" placeholder="请输入姓名">
@@ -13,10 +13,10 @@
         </ng-container>
       </nz-form-explain>
     </nz-form-control>
-  </nz-form-item>
+  </nz-form-item> -->
 
   <!-- 性别 -->
-  <nz-form-item>
+  <!-- <nz-form-item>
     <nz-form-label [nzSpan]="7" nzRequired>性别</nz-form-label>
     <nz-form-control [nzSpan]="12">
       <nz-radio-group formControlName="gender">
@@ -29,10 +29,10 @@
         </ng-container>
       </nz-form-explain>
     </nz-form-control>
-  </nz-form-item>
+  </nz-form-item> -->
 
   <!-- 邮箱 -->
-  <nz-form-item>
+  <!-- <nz-form-item>
     <nz-form-label [nzSpan]="7" nzRequired>邮箱</nz-form-label>
     <nz-form-control [nzSpan]="12" nzHasFeedback>
       <input nz-input formControlName="email" placeholder="请输入邮箱" type="email">
@@ -45,10 +45,10 @@
         </ng-container>
       </nz-form-explain>
     </nz-form-control>
-  </nz-form-item>
+  </nz-form-item> -->
 
   <!-- 手机号码 -->
-  <nz-form-item>
+  <!-- <nz-form-item>
     <nz-form-label [nzSpan]="7">手机号码</nz-form-label>
     <div>
       <nz-form-control [nzSpan]="12" nzHasFeedback>
@@ -56,10 +56,10 @@
         <nz-form-explain *ngIf="employeeAddForm.get('phoneNumber').dirty&&employeeAddForm.get('phoneNumber').hasError('pattern')">手机号码格式不正确</nz-form-explain>
       </nz-form-control>
     </div>
-  </nz-form-item>
+  </nz-form-item> -->
 
   <!-- 入职日期 -->
-  <nz-form-item>
+  <!-- <nz-form-item>
     <nz-form-label [nzSpan]="7">入职日期</nz-form-label>
     <nz-form-control [nzSpan]="12" nzHasFeedback>
       <nz-date-picker nzFormat="yyyy-MM-dd" formControlName="joinDate"></nz-date-picker>
@@ -69,13 +69,65 @@
         </ng-container>
       </nz-form-explain>
     </nz-form-control>
-  </nz-form-item>
+  </nz-form-item> -->
 
   <!-- 添加按钮 -->
-  <nz-form-item>
+  <!-- <nz-form-item>
     <nz-form-control [nzOffset]="7" [nzSpan]="12">
       <button nz-button nzType="primary" [disabled]="!employeeAddForm.valid">添加</button>
       <button nz-button (click)="resetForm($event)">重置</button>
+    </nz-form-control>
+  </nz-form-item> -->
+
+  <!-- 故障等级 -->
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5" nzRequired>故障等级</nz-form-label>
+    <nz-form-control [nzSpan]="17">
+      <nz-select
+        formControlName="level"
+        nzPlaceHolder="请选择故障等级"
+        (ngModelChange)="failureLeveChange()"
+      >
+        <nz-option *ngFor="let option of failureLevelArr" [nzLabel]="option.value" [nzValue]="option.key"></nz-option>
+      </nz-select>
+      <nz-form-explain *ngIf="validateForm.get('level')?.dirty && validateForm.get('level')?.errors"
+      >请选择故障等级
+      </nz-form-explain
+      >
+    </nz-form-control>
+  </nz-form-item>
+  <!-- 问题类型 -->
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5" nzRequired>问题类型</nz-form-label>
+    <nz-form-control [nzSpan]="17">
+      <nz-select
+        formControlName="problemType"
+        [nzPlaceHolder]="questionTypePlaceholder"
+        [nzDisabled] = "questionTypeDisabled"
+      >
+        <nz-option *ngFor="let option of problemTypeArr" [nzLabel]="option.value" [nzValue]="option.key"></nz-option>
+      </nz-select>
+      <nz-form-explain *ngIf="validateForm.get('problemType')?.dirty && validateForm.get('problemType')?.hasError('required')"
+      >请选择问题类型
+      </nz-form-explain
+      >
+    </nz-form-control>
+  </nz-form-item>
+  <!-- 附件 -->
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5">附件</nz-form-label>
+    <nz-form-control [nzSpan]="17">
+      <nz-upload
+        [nzBeforeUpload]="sizeLimit"
+        [nzAction]="uploadUrl"
+        [nzHeaders]="setHeader"
+        [nzRemove]="removeFile"
+        (nzChange)="handleChange($event)"
+      >
+        <button type="button" nz-button  [disabled]="uploading"><i nz-icon type="upload"></i><span>上传文件</span></button>
+        <span class="ml10">请上传小于5M的文件</span>
+      </nz-upload>
+
     </nz-form-control>
   </nz-form-item>
 </form>

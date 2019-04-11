@@ -9,6 +9,8 @@ import { Router } from '@angular/router'
 // 导入类型
 import { LoginForm } from './login.type'
 
+import {CacheService} from '../shared/service/cache.service';
+
 // token 接口
 interface Token {
   token: string
@@ -16,12 +18,15 @@ interface Token {
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  // providers: [CacheService]
 })
 export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private loginService: LoginService,
+    private cacheService: CacheService,
+    // private modalService: NzModalService,
     private router: Router
   ) {}
   loginForm: FormGroup
@@ -49,14 +54,20 @@ export class LoginComponent implements OnInit {
     // this.loginService.login(loginParams).subscribe((res: Token) => {
       // console.log('登录成功', res)
       // 存储token
-      localStorage.setItem('token', '3ee3744c-4b70-42fb-a05d-5eff071ba8c4');
+      // localStorage.setItem('token', '3ee3744c-4b70-42fb-a05d-5eff071ba8c4');
+      const token = '3ee3744c-4b70-42fb-a05d-5eff071ba8c4';
       const url = window.sessionStorage.getItem('beforeurl');
-      console.log(url, 'url');
+      // console.log(url, 'url');
       if (url && (url.indexOf('home') !== -1) && (url.indexOf('login') !== -1)) {
+        console.log(url, 'url1');
         this.router.navigate(['./' + url]);
       } else {
         this.router.navigate(['/home'])
       }
+      this.cacheService.set('myToken', {
+        token: token,
+        username : this.loginForm.value.userName,
+      });
     // })
   }
   ngOnInit(): void {

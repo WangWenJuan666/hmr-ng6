@@ -20,7 +20,10 @@ export class DashBoardComponent implements OnInit {
     { key: 8, value: '导致大面积的实时业务中断' },
     { key: 9, value: '暂无修复方案的 Bug' }
   ];
-
+  // 按钮颜色
+  dayType = 'default'; // 按钮颜色
+  weekType = 'default';
+  monthType = 'default';
   dayArr = {
     series: [
       {
@@ -100,6 +103,15 @@ export class DashBoardComponent implements OnInit {
     xAxis: []
   };
 
+  // 完成率
+  curMonth = {complete: null, pComplete: null, pStart: null, start: null, submit: null, };
+  curWeek = {complete: null, pComplete: null, pStart: null, start: null, submit: null, };
+  today: any = {complete: null, pComplete: null, pStart: null, start: null, submit: null, };
+  yesterday:   any = {complete: null, pComplete: null, pStart: null, start: null, submit: null, };
+
+  complete = [{content: null, id: null, level: null, levelStr: null}];
+  pending = [{content: null, id: null, level: null, levelStr: null}];
+  processed = [{content: null, id: null, level: null, levelStr: null}];
   // chartOption: EChartOption = {
   //   title: {
   //     text: '折线图堆叠'
@@ -132,16 +144,48 @@ export class DashBoardComponent implements OnInit {
   // }
   chartOption: EChartOption = {};
   echartsIntance: any;
-  // 按钮颜色
-  dayType = 'default'; // 按钮颜色
-  weekType = 'default';
-  monthType = 'default';
+
 
   ngOnInit() {
+    this.countStatistics();
+    this.latestTickets();
     this.lineChart();
   }
 
-  // 数据方法
+  // 完成率数据
+  countStatistics() {
+    const res = DashData.countStatistics;
+    if (res.retCode === 1) {
+      if (res.result.curMonth) {
+        this.curMonth = res.result.curMonth;
+      }
+      if (res.result.curWeek) {
+        this.curWeek = res.result.curWeek;
+      }
+      if (res.result.today) {
+        this.today = res.result.today;
+      }
+      if (res.result.yesterday) {
+        this.yesterday = res.result.yesterday;
+      }
+    }
+  }
+
+  latestTickets() {
+    const res = DashData.latestTickets;
+      if (res.retCode === 1) {
+        if (res.result.complete) {
+          this.complete = res.result.complete;
+        }
+        if (res.result.pending) {
+          this.pending = res.result.pending;
+        }
+        if (res.result.processed) {
+          this.processed = res.result.processed;
+        }
+      }
+  }
+  // 图表数据方法
   lineChart() {
     const res = DashData.lineData;
     if (res.retCode === 1) {
@@ -205,7 +249,6 @@ export class DashBoardComponent implements OnInit {
       this.weekType = 'default';
     }
   }
-
   onChartInit(ec) {
     this.echartsIntance = ec;
   }

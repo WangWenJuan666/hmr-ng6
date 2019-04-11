@@ -1,1 +1,246 @@
 /* You can add global styles to this file, and also import other style files */
+body,html{
+  height: 100%;
+  background:rgba(241,242,245,1);
+}
+ul, li {
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.min-w800{
+  min-width: 800px;
+}
+.wd200{
+  width: 200px;
+}
+.content{
+  height: calc(100% - 64px);
+}
+.flr{
+  float: right;
+}
+.fll{
+  float: left;
+}
+/*清除浮动*/
+.clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+.clearfloat{zoom:1}
+
+.mar0{
+  margin: 0 auto !important;
+}
+.mt14{
+  margin-top: 14px;
+} 
+.mt30{
+  margin-top: 30px;
+}
+.mt50{
+  margin-top: 50px;
+}
+.mb10{
+  margin-bottom: 10px;
+}
+.mb15{
+  margin-bottom: 15px;
+}
+.mr10{
+  margin-right: 10px;
+}  
+.mr20{
+  margin-right: 20px !important;
+}
+.mr30{
+  margin-right: 30px !important;
+}
+.mr50{
+  margin-right: 50px !important;
+}
+.ml10{
+  margin-left: 10px !important;
+}
+.ml30{
+  margin-left: 30px;
+}
+.pt20{
+  padding-bottom:20px;
+}
+
+.pd20{
+  padding-bottom:20px;
+}
+.pd30{
+  padding-bottom:30px;
+}
+.pl20{
+  padding-left:20px;
+}
+.pr20{
+  padding-right:20px;
+}
+/*二级菜单浮动*/
+.content{
+  padding: 0 20px;
+}
+.secondaryTitle{
+  height: 60px;
+  line-height: 60px;
+}
+.secondaryTitle .title{
+  font-size: 20px;
+  font-weight: bold;
+}
+.ft20{
+  font-size: 20px;
+}
+.bold{
+  font-weight: bold;
+}
+
+.tgc{
+  text-align: center;
+}
+
+/*重置表格样式*/
+.ant-table-small>.ant-table-content>.ant-table-body>table{
+ padding: 0;
+}
+
+
+/*去掉input[type="number"]的上下按钮*/
+/* 谷歌 */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+/* 火狐 */
+input{
+  -moz-appearance:textfield;
+}
+
+
+/*工单列表，故障等级，状态*/
+span.span-level-four{
+  display: inline-block;
+  padding: 2px 10px;
+  min-width: 50px;
+  border-radius: 3px;
+  background: blue;
+  color: #fff;
+}
+span.span-level-three{
+  display: inline-block;
+  padding: 2px 10px;
+  min-width: 50px;
+  border-radius: 3px;
+  background: yellow;
+
+}
+span.span-level-two{
+  display: inline-block;
+  padding: 2px 10px;
+  min-width: 50px;
+  border-radius: 3px;
+  background: orange;
+  color: #fff;
+}
+span.span-level-one{
+  display: inline-block;
+  padding: 2px 10px;
+  min-width: 50px;
+  border-radius: 3px;
+  background: rgba(244,91,83,1);
+  color: #fff;
+}
+
+span.span-status-pending{
+  display: inline-block;
+  padding: 2px 10px;
+  min-width: 70px;
+  text-align: center;
+  border-radius: 3px;
+  background: rgba(244,91,83,1);
+  color: #fff;
+}
+span.span-status-already{
+  display: inline-block;
+  padding: 2px 10px;
+  min-width: 70px;
+  text-align: center;
+  border-radius: 3px;
+  background: rgba(109,204,156,1);
+  color: #fff;
+}
+span.span-status-complete{
+  display: inline-block;
+  min-width: 70px;
+  padding: 2px 10px;
+  text-align: center;
+  border-radius: 3px;
+  background: rgba(37,132,204,1);
+  color: #fff;
+}
+
+
+
+.z-100{z-index: 100;}
+
+/*进度条样式*/
+/*.ant-steps-item-process .ant-steps-item-icon {*/
+  /*background: red;*/
+/*}*/
+/*.ant-steps-item-process .ant-steps-item-icon {*/
+/*border-color: red;*/
+/*}*/
+/* 管理端头部缝隙样式 */
+.ant-menu-item-group-title{
+  color: rgba(0,0,0,.45);
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 8px 16px;
+  transition: all .3s;
+  display: none !important;
+}
+.ant-menu-submenu-placement-bottomLeft{
+  top: 5px !important;
+}
+
+
+/*重置loading图样式*/
+.loading-box{
+  height: 100%;
+}
+.ant-spin-nested-loading {
+  height: 100%;
+}
+.ant-spin-container {
+  height: 100%;
+}
+.ant-spin-nested-loading>div>.ant-spin {
+  max-height: 100%;
+}
+
+
+/*备注（对话）*/
+.questionbox{
+  padding: 10px;
+  border-top: 1px dashed #ccc;
+}
+.questionbox:nth-of-type(1){
+  border: none;
+}
+/*.questionbox:nth-last-of-type(1){*/
+  /*border: none;*/
+/*}*/
+.questionbox .username{
+  float: left;
+  color: rgba(0,0,0,.45);
+}
+.questionbox .date{
+  float: right;
+  color: rgba(0,0,0,.45);
+}
+          

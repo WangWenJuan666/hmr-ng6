@@ -22,11 +22,14 @@ import { NgxEchartsModule } from 'ngx-echarts';
 
 // pipe
 import { PipeModule } from './shared/pipe/pipe.module';
+import { LimitdigitsDirective } from './shared/directive/limitdigits.directive';
+
+import { CacheService } from './shared/service/cache.service';
 
 registerLocaleData(zh)
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent ],
+  declarations: [AppComponent, LoginComponent, HomeComponent, LimitdigitsDirective ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -44,7 +47,7 @@ registerLocaleData(zh)
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptors,
       multi: true
-    }
+    }, CacheService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,3 +1,95 @@
+
+table{
+  border-right:1px solid #d2d2d2;
+  border-bottom:1px solid #d2d2d2
+}
+table td,th{
+  border-left:1px solid #d2d2d2;
+  border-top:1px solid #d2d2d2;
+  border-right: 1px solid #d2d2d2;
+}
+.index-table{
+width: 100%;
+text-align: center;
+margin-top: 50px;
+
+}
+.index-table tr{
+  height: 50px;
+  line-height: 50px;
+  font-size: 18px;
+  
+}
+.table-box{
+margin-top: 30px;
+}
+.table-ticket{
+  width: 30%;
+  float: left;
+  margin-right: 3%;
+  text-align: center;
+  display: block;
+  height: 220px;
+  overflow-y: scroll;
+}
+.table-ticket tr{
+  height: 40px;
+  line-height: 40px;
+  display: table;
+  width: 100%;
+  table-layout:fixed;
+}
+.item-status{
+  width: 20%;
+  display: block;
+  width: left;
+  float: left;
+  width: 80px;
+  height: 30px;
+  line-height: 30px;
+  margin-left: 10px;
+  margin-top: 5px;
+  font-size: 16px;
+  border-radius: 51%;
+  color: white;
+}
+.item-lever{
+  width: 30%;
+  float: left;
+  width: 85px;
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 30px;
+  line-height: 25px;
+  font-size: 16px;
+}
+.item-content{
+  float: left;
+  margin-left: 15px;
+  text-align: left;
+  cursor: pointer;
+}
+.color1{
+  background-color: rgba(244,91,83,1);
+}
+.color2{
+  background-color: rgba(109,204,156,1);
+}
+.color3{
+  background-color: rgba(37,132,204,1);
+}
+.charts{
+    height: 300px;
+    margin-top: 30px;
+}
+
+[nz-button] {
+    margin-right: 8px;
+    margin-bottom: 12px;
+}
+
+
 .charts{
   height: 300px;
   margin-top: 30px;

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core'
 
+import {CacheService} from './../service/cache.service';
+
 // 导入路由服务实现跳转
 // 导入路由服务实现跳转
 import { Router } from '@angular/router';
@@ -9,13 +11,13 @@ import {ActivatedRouteSnapshot, CanActivate, NavigationError, RouterStateSnapsho
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private cacheService: CacheService) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
 
 
     // 获取token
-    const token = localStorage.getItem('token')
+    const token = this.cacheService.get('myToken', 'token' );
     const url: string = state.url;
       window.sessionStorage.setItem('beforeUrl', url);
     if (!token) {

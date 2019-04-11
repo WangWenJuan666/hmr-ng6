@@ -1,3 +1,98 @@
+<div class="content">
+  <table class="index-table" border="0" cellspacing="0" cellpadding="0">
+    <thead>
+      <tr>
+        <th></th>
+        <th>新工单</th>
+        <th>处理数</th>
+        <th>完成数</th>
+        <th>执行率</th>
+        <th>完成率</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>今天</td>
+        <td>{{ today['submit'] }}</td>
+        <td>{{ today['start'] }}</td>
+        <td>{{ today['complete'] }}</td>
+        <td *ngIf = 'today.pStart'>{{ today['pStart'] * 100 }}%</td>
+        <td *ngIf = '!today.pStart'>--</td>
+        <td *ngIf = 'today.pComplete'>{{ today['pComplete'] * 100 }}%</td>
+        <td *ngIf = '!today.pComplete'>--</td>
+      </tr>
+      <tr>
+        <td>昨天</td>
+        <td>{{ yesterday['submit'] }}</td>
+        <td>{{ yesterday['start'] }}</td>
+        <td>{{ yesterday['complete'] }}</td>
+        <td *ngIf = 'yesterday.pStart'>{{ yesterday['pStart'] * 100 }}%</td>
+        <td *ngIf = '!yesterday.pStart'>--</td>
+        <td *ngIf = 'yesterday.pComplete'>{{ yesterday['pComplete'] * 100 }}%</td>
+        <td *ngIf = '!yesterday.pComplete'>--</td>
+      </tr>
+      <tr>
+        <td>本周</td>
+        <td>{{ curWeek['submit'] }}</td>
+        <td>{{ curWeek['start'] }}</td>
+        <td>{{ curWeek['complete'] }}</td>
+        <td *ngIf = 'curWeek.pStart'>{{ curWeek['pStart'] * 100 }}%</td>
+        <td *ngIf = '!curWeek.pStart'>--</td>
+        <td *ngIf = 'curWeek.pComplete'>{{ curWeek['pComplete'] * 100 }}%</td>
+        <td *ngIf = '!curWeek.pComplete'>--</td>
+      </tr>
+      <tr>
+        <td>本月</td>
+        <td>{{ curMonth['submit'] }}</td>
+        <td>{{ curMonth['start'] }}</td>
+        <td>{{ curMonth['complete'] }}</td>
+        <td *ngIf = 'curMonth.pStart'>{{ curMonth['pStart'] * 100 }}%</td>
+        <td *ngIf = '!curMonth.pStart'>--</td>
+        <td *ngIf = 'curMonth.pComplete'>{{ curMonth['pComplete'] * 100 }}%</td>
+        <td *ngIf = '!curMonth.pComplete'>--</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="table-box clearfloat">
+    <table class="table-ticket" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th colspan="3">新/未读工单</th>
+      </tr>
+      <tr *ngFor="let item of pending">
+        <td>
+          <span class='item-status color1'>待受理</span>
+          <span class='item-lever' [ngClass]="{'span-level-four': item.level===4,'span-level-three': item.level===3,'span-level-two': item.level===2,'span-level-one': item.level===1}">{{ item.levelStr }}</span>
+          <span class='item-content'><a routerLink = '../../ticket/accept/{{"dash"}}/{{item.id}}'>{{ item.content }}</a></span> 
+        </td>
+      </tr>
+    </table>
+
+    <table class="table-ticket" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th>新受理/待回复工单</th>
+      </tr>
+      <tr *ngFor="let item of processed">
+        <td>
+          <span class='item-status color2'>已受理</span>
+          <span class='item-lever' [ngClass]="{'span-level-four': item.level===4,'span-level-three': item.level===3,'span-level-two': item.level===2,'span-level-one': item.level===1}">{{ item.levelStr }}</span>
+          <span class='item-content'><a routerLink = '../../ticket/accept/{{"dash"}}/{{item.id}}'>{{ item.content }}</a></span>
+        </td>
+      </tr>
+    </table>
+
+    <table class="table-ticket" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th colspan="3">已完成/关闭工单</th>
+      </tr>
+      <tr *ngFor="let item of complete">
+        <td>
+          <span class='item-status color3'>已完成</span>
+          <span class='item-lever' [ngClass]="{'span-level-four': item.level===4,'span-level-three': item.level===3,'span-level-two': item.level===2,'span-level-one': item.level===1}">{{ item.levelStr }}</span>
+          <span class='item-content'><a routerLink = '../../ticket/accept/{{"dash"}}/{{item.id}}'>{{ item.content }}</a></span>
+        </td>
+      </tr>
+    </table>
+  </div>
 <div style='margin-bottom: 90px;'>
   <!--  -->
     <div echarts [options]='chartOption' (chartInit)='onChartInit($event)' class='charts'></div>
@@ -7,7 +102,7 @@
       <button nz-button [nzType]='monthType' (click) = 'monthEvent()'>月</button>
     </div>
   </div>
-  <ul>
+  <!-- <ul>
     <li *ngFor='let item of problemTypeArr; let i = index' [ngClass]='{red: cur === i}' class='' (click) = 'cur = i'>{{item.key}}----{{item.value}}</li>
-  </ul>
+  </ul> -->
   

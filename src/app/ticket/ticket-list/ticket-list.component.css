@@ -1,0 +1,59 @@
+.components-table-demo-control-bar {
+  margin-bottom: 12px;
+}
+
+.nz-form-item {
+  margin-right: 16px;
+  margin-bottom: 8px;
+}
+
+nz-date-picker,
+nz-month-picker,
+nz-range-picker,
+nz-week-picker {
+  margin: 0 8px 12px 0;
+}
+
+.ant-input {
+  width: 200px;
+  margin: 0 8px 8px 0;
+}
+
+nz-select {
+  margin-right: 8px;
+}
+
+.info-box {
+  background-color: #fff;
+}
+
+.card {
+  border: none;
+}
+
+.card-count {
+  height: 50px;
+  width: 100%;
+  display: block;
+  line-height: 50px;
+  font-size: 40px;
+  text-align: center;
+}
+
+.card-title {
+  height: 30px;
+  display: block;
+  margin: 0;
+  font-size: 25px;
+  text-align: center;
+}
+
+.card.color1{
+  color: rgba(244,91,83,1);
+}
+.card.color2{
+  color: rgba(109,204,156,1);
+}
+.card.color3{
+  color: rgba(37,132,204,1);
+}

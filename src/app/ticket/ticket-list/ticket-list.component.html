@@ -1,0 +1,124 @@
+<div>
+    <div nz-row>
+      <div class="secondaryTitle clearfloat" nz-col nzSpan="24">
+        <!-- <button class="flr mt14 mr20" nz-button nzType="primary" routerLink='../ticket-submit'>新增工单</button> -->
+      </div>
+    </div>
+    <!-- 统计图表 -->
+    <div nz-row nzType="flex" nzJustify="space-around" class="info-box">
+      <nz-card nz-col nzSpan="5" class='card color1'>
+        <span class='card-count'>{{statistics['pending'] || 0}}</span>
+        <p class='card-title'>待受理</p>
+      </nz-card>
+      <nz-card nz-col nzSpan="5" class='card color2'>
+        <span class='card-count'>{{statistics['processed'] || 0}}</span>
+        <p class='card-title'>已受理</p>
+      </nz-card>
+      <!-- <nz-card nz-col nzSpan="4">
+        <span class='card-count'>10</span>
+        <p class='card-title'>待回复</p>
+      </nz-card> -->
+      <nz-card nz-col nzSpan="5" class='card color3' >
+        <span class='card-count'>{{ statistics['complete'] || 0}}</span>
+        <p class='card-title'>已完成</p>
+      </nz-card>
+    </div>
+    <div class='content'>
+      <div nz-row nzJustify="start" class='clearfloat mt14'>
+        <div nz-col class='fll mr20'>
+          <nz-select class="wd200" [(ngModel)]="faiLevel">
+            <nz-option *ngFor="let option of failureLevelArr" [nzLabel]="option.value" [nzValue]="option.key"></nz-option>
+          </nz-select>
+        </div>
+        <!-- 支持等级 -->
+        <!-- <div nz-col class='fll mr20'>
+          <nz-select class="wd200"
+          [(ngModel)]="supportLevel">
+            <nz-option *ngFor="let option of supportLevelArr" [nzLabel]="option.value" [nzValue]="option.key"></nz-option>
+          </nz-select>
+        </div> -->
+        <div nz-col class='fll mr20'>
+          <nz-select class="wd200"
+                     [(ngModel)]="status">
+            <nz-option *ngFor="let option of statusArr" [nzLabel]="option.value" [nzValue]="option.key"></nz-option>
+          </nz-select>
+        </div>
+        <div nz-col class='fll mr20'>
+          <input nz-input type="text" name='username' [(ngModel)]='content' placeholder="工单编号或问题标题" nzSize="default"/>
+        </div>
+        <div nz-col class='fll mr20'>
+          <nz-date-picker
+            [nzDisabledDate]="disabledStartDate"
+            nzFormat="yyyy-MM-dd"
+            [(ngModel)]="startValue"
+            nzPlaceHolder="开始日期"
+            [nzShowToday] = "false"
+            (ngModelChange)="onStartChange($event)"
+          >
+          </nz-date-picker>
+          <nz-date-picker
+            [nzDisabledDate]="disabledEndDate"
+            nzFormat="yyyy-MM-dd"
+            [(ngModel)]="endValue"
+            [nzShowToday] = "false"
+            nzPlaceHolder="结束日期"
+            (ngModelChange)="onEndChange($event)"
+          >
+          </nz-date-picker>
+        </div>
+        <div nz-col class='fll mr20'>
+          <button nz-button nzType="primary" (click)="pageNum = 1;ticketList()">搜索</button>
+        </div>
+      </div>
+      <nz-table #editRowTable 
+                [nzData]="listOfData"
+                [nzBordered]="true"
+                [nzFrontPagination]="true"
+                [nzTotal]="total"
+                [(nzPageIndex)]="pageNum"
+                [nzPageSize]="pageSize"
+                [nzShowPagination]='true'
+                noResult='noResult'
+                [nzSize]="'small'"
+                [nzShowQuickJumper] = 'true'
+                (nzPageIndexChange)="changePage($event)"
+                [nzShowTotal]="totalTemplate"
+      >
+        <thead>
+        <tr>
+          <th>工单编号</th>
+          <th>故障等级</th>
+          <th>问题标题</th>
+          <th>状态</th>
+          <th>提交时间</th>
+          <th>更新时间</th>
+          <th>提交人</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-template ngFor let-data [ngForOf]="editRowTable.data">
+          <tr>
+            <td>{{data.ticketNumber || '--'}}</td>
+            <td>
+              <span [ngClass]="{'span-level-four': data.failureLevel===4,'span-level-three': data.failureLevel===3,'span-level-two': data.failureLevel===2,'span-level-one': data.failureLevel===1}">{{data.failureLevel | failureLevesShow}}</span>
+            </td>
+            <td>{{data.content}}</td>
+            <td>
+              <span [ngClass]="{'span-status-pending': data.status===0,'span-status-already': data.status===1,'span-status-complete': data.status===2}">{{data.status | statusShow}}</span></td>
+            <td>{{data.submitTime || '--'}}</td>
+            <td>{{data.updateTime || '--'}}</td>
+            <td>{{data.member}}</td>
+            <td>
+              <a routerLink = '../detail/{{data.ticketId}}'>查看</a>
+              <nz-divider nzType="vertical"></nz-divider>
+              <a routerLink = '../edit/{{data.ticketId}}'>编辑</a>
+            </td>
+          </tr>
+        </ng-template>
+        </tbody>
+      </nz-table>
+      <ng-template #totalTemplate let-total>总共 {{ total }} 条</ng-template>
+    </div>
+  </div>
+  

@@ -1,0 +1,22 @@
+.ant-divider-horizontal {
+  height: 1px;
+  background-color: #9E9E9E;
+  margin: 5px 0;
+}
+
+.row-div {
+  min-height: 40px;
+  line-height: 40px;
+}
+
+.ticket-box {
+  min-width: 800px;
+  width: 1000px;
+  margin: 20px auto;
+  border: 1px solid #d2d2d2;
+  background-color: white;
+}
+
+.nz-steps {
+  margin-top: 20px !important;
+}

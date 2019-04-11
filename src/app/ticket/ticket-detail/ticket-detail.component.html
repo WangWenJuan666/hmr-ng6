@@ -1,0 +1,176 @@
+<div class="content">
+    <nz-breadcrumb class="ft20 bold mt30">
+      <nz-breadcrumb-item>
+        <a (click)="goBack()">工单列表</a>
+        <!-- <a *ngIf="entryPathName === 'mine'" (click)="goBack()">我的工单</a> -->
+        <!-- <a *ngIf="entryPathName === 'dash'" (click)="goBack()">仪表盘</a> -->
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        <span *ngIf="current === 2">查看工单</span>
+        <span *ngIf="current !== 2">处理工单</span>
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+  
+    <div class="ticket-box">
+      <!-- 进度条 -->
+      <div
+        class="nz-steps"
+        nz-row
+        nzType="flex"
+        nzJustify="space-around"
+        nzAlign="middle"
+      >
+        <div nz-col nzSpan="22">
+          <nz-steps [nzCurrent]="current">
+            <nz-step nzTitle="待受理"></nz-step>
+            <nz-step nzTitle="已受理"></nz-step>
+            <nz-step nzTitle="已完成"></nz-step>
+          </nz-steps>
+        </div>
+        <div nz-col nzSpan="22" class="mt30 mb10">
+          <div nz-col nzSpan="9">
+            <label for="">工单编号：</label
+            ><span>{{ seeObj["ticketNumber"] }}</span>
+          </div>
+          <div nz-col nzSpan="9">
+            <label for="">提交时间：</label
+            ><span>{{ seeObj["submitTime"] || "暂无" }}</span>
+          </div>
+          <div nz-col nzSpan="6">
+            <label for="">工单状态：</label
+            ><span>{{ seeObj["status"] | statusShow }}</span>
+          </div>
+        </div>
+      </div>
+      <nz-divider></nz-divider>
+      <div
+        nz-row
+        nzType="flex"
+        nzJustify="space-around"
+        nzAlign="middle"
+        class="pd30"
+      >
+        <div nz-col nzSpan="22">
+          <div class="row-div">
+            <label for="" nz-col nzSpan="3">抄送</label
+            ><nz-tag *ngFor="let email of emails">{{ email }}</nz-tag>
+          </div>
+          <div class="row-div">
+            <label for="" nz-col nzSpan="3">故障等级</label
+            ><span>{{ seeObj["level"] | failureLevesShow }}</span>
+          </div>
+          <div class="row-div">
+            <label for="" nz-col nzSpan="3">问题类型</label
+            ><span>{{
+              seeObj["problemType"] | problemTypeShow: seeObj["level"]
+            }}</span>
+          </div>
+          <div class="row-div">
+            <label for="" nz-col nzSpan="3">问题标题</label
+            ><span>{{ seeObj["content"] }}</span>
+          </div>
+          <div class="row-div">
+            <label for="" nz-col nzSpan="3">问题描述</label
+            ><span>{{ seeObj["description"] }}</span>
+          </div>
+          <div class="row-div">
+            <label for="" nz-col nzSpan="3">Neo4j版本</label
+            ><span>{{ seeObj["nver"] | versionShow }}</span>
+          </div>
+          <div class="row-div">
+            <label for="" nz-col nzSpan="3">实际数量</label
+            ><span>{{ seeObj["instancesCount"] }}</span>
+          </div>
+          <div class="row-div">
+            <label for="" nz-col nzSpan="3">部署模式</label
+            ><span>{{ seeObj["depPattern"] | depPatternShow }}</span>
+          </div>
+          <div class="row-div">
+            <label for="" nz-col nzSpan="3">附件</label>
+            <span *ngIf="files.length > 0"
+              ><a
+                *ngFor="let item of files"
+                target="_blank"
+                (click)="getFile(item)"
+                class="mr30"
+                >{{ item }}</a
+              ></span
+            >
+            <span *ngIf="files.length === 0">暂无</span>
+          </div>
+          <div class="row-div">
+            <div nz-row nzJustify="start" class="mt14">
+              <button
+                class="mr30"
+                *ngIf="authority === 1 && current === 0"
+                (click)="getDown()"
+                nz-button
+                nzType="primary"
+              >
+                开始处理
+              </button>
+              <button
+                *ngIf="authority === 1 && current === 0"
+                nz-button
+                nzType="primary"
+                (click)="goBack()"
+              >
+                暂缓处理
+              </button>
+              <button
+                *ngIf="authority === 2 && current === 1"
+                nz-button
+                nzType="primary"
+                (click)="shutdown()"
+              >
+                关闭工单
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nz-divider></nz-divider>
+      <!--留言相关-->
+      <div nz-row
+           nzType="flex"
+           nzJustify="space-around"
+           nzAlign="middle"
+           class="pd30">
+        <div nz-col nzSpan="22">
+          <h3 class="mt14">备注</h3>
+          <div class="questionbox" *ngFor="let chat of chatList">
+            <div class="clearfloat">
+              <div class="username">{{chat.name}}</div>
+              <div class="date">{{chat.chatTime}}</div>
+            </div>
+            <div class="message">
+              {{chat.content}}
+            </div>
+            <div class="row-div" *ngIf="chat.files.length > 0">
+              <span><a *ngFor="let item of chat.files" target="_blank" (click)="getFile(item)" class="mr30">{{item}}</a></span>
+            </div>
+          </div>
+          <div class="questionbox" *ngIf="current !== 2">
+            <div class="mb10">
+              <nz-upload
+                [nzBeforeUpload]="sizeLimit"
+                [nzAction]="uploadUrl"
+                [nzHeaders]="setHeader"
+                [nzRemove]="removeFile"
+                [(nzFileList)]="fileList"
+                (nzChange)="handleChange($event)"
+              >
+                <button type="button" nz-button [disabled]="uploading"><i nz-icon type="upload"></i><span>添加附件</span></button>
+                <span class="ml10">请上传小于5M的文件</span>
+              </nz-upload>
+            </div>
+            <textarea class="mb10" [(ngModel)]="content" nz-input rows="4"></textarea>
+            <button nz-button nzType="primary" (click)="addMsg()" [disabled]="!content" >
+              新增
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

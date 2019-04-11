@@ -1,0 +1,128 @@
+<div class='content'>
+    <nz-breadcrumb class="ft20 bold mt30">
+      <nz-breadcrumb-item>
+        <a (click)="goBack()">工单列表</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        编辑工单
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <form nz-form [nzLayout]="'horizontal'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <!--抄送-->
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">抄送</nz-form-label>
+        <nz-form-control [nzSpan]="17">
+          <nz-tag *ngFor="let email of emails">{{email}}</nz-tag>
+        </nz-form-control>
+      </nz-form-item>
+      <!-- 联系电话 -->
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">联系电话</nz-form-label>
+        <nz-form-control [nzSpan]="17">
+          <input nz-input formControlName="phone">
+        </nz-form-control>
+      </nz-form-item>
+      <!-- 故障等级 -->
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">故障等级</nz-form-label>
+        <nz-form-control [nzSpan]="17">
+          <nz-select
+            formControlName="level"
+          >
+            <nz-option *ngFor="let option of failureLevelArr" [nzLabel]="option.value" [nzValue]="option.key"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <!-- 问题类型 -->
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">问题类型</nz-form-label>
+        <nz-form-control [nzSpan]="17">
+          <nz-select
+            formControlName="problemType"
+            [nzPlaceHolder]="questionTypePlaceholder"
+          >
+            <nz-option *ngFor="let option of problemTypeArr" [nzLabel]="option.value" [nzValue]="option.key"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <!-- 问题标题 -->
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">问题标题</nz-form-label>
+        <nz-form-control [nzSpan]="17">
+          <input nz-input formControlName="content">
+        </nz-form-control>
+      </nz-form-item>
+      <!-- 问题描述 -->
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">问题描述</nz-form-label>
+        <nz-form-control [nzSpan]="17">
+          <textarea formControlName="description" nz-input rows="10"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+      <!-- Neo4j版本 -->
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">Neo4j版本</nz-form-label>
+        <nz-form-control [nzSpan]="17">
+          <nz-select
+            formControlName="nver"
+          >
+            <nz-option *ngFor="let option of versionArr" [nzLabel]="option.value" [nzValue]="option.key"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <!-- 发行版本 -->
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">发行版本</nz-form-label>
+        <nz-form-control [nzSpan]="17">
+          <nz-select
+            formControlName="realseVer"
+          >
+            <nz-option *ngFor="let option of realseVersionArr" [nzLabel]="option.value" [nzValue]="option.key"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <!-- 实际数量 -->
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">实际数量</nz-form-label>
+        <nz-form-control [nzSpan]="17">
+          <input nz-input type="number" formControlName="InsCount">
+        </nz-form-control>
+      </nz-form-item>
+      <!-- 部署模式 -->
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">部署模式</nz-form-label>
+        <nz-form-control [nzSpan]="17">
+          <nz-select
+            formControlName="depPattern"
+          >
+            <nz-option *ngFor="let option of depPatternArr" [nzLabel]="option.value" [nzValue]="option.key"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <!-- 附件 -->
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">附件</nz-form-label>
+        <nz-form-control [nzSpan]="17">
+          <nz-upload
+            [nzBeforeUpload]="sizeLimit"
+            [nzAction]="uploadUrl"
+            [nzHeaders]="setHeader"
+            [nzRemove]="removeFile"
+            [(nzFileList)]="fileList"
+            (nzChange)="handleChange($event)"
+          >
+            <button type="button" nz-button [disabled]="uploading"><i nz-icon type="upload"></i><span>上传文件</span></button>
+            <span class="ml10">请上传小于5M的文件</span>
+          </nz-upload>
+  
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzSpan]="" nzOffset="8">
+          <button type="submit" nz-button nzType="primary" nzBlock>确定</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+  
+  

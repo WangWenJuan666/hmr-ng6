@@ -247,5 +247,8 @@ sizeLimit = (file: UploadFile, fileList: UploadFile[]): boolean => {
   goBack(): void {
     this.location.back();
   }
+  /**
+   * 响应式表单提供了一种模型驱动的方式来处理表单输入，其中的值会随时间而变化，
+   */
 
 }

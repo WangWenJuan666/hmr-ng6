@@ -14,7 +14,8 @@
       <li nz-submenu>
         <span title><i class="anticon anticon-user"></i>员工管理</span>
         <ul>
-          <li nz-menu-item routerLink="/home/employee">邮件列表</li>
+            <!-- RouterLinkActive 指令会基于当前的 RouterState 为活动的 RouterLink 切换所绑定的 css 类 -->
+          <li nz-menu-item routerLink="/home/employee" routerLinkActive = ''>邮件列表</li>
           <li nz-menu-item routerLink="/home/employee/add">员工添加</li>
         </ul>
       </li>
@@ -29,6 +30,13 @@
         <span title><i class="anticon anticon-lock"></i>权限管理</span>
         <ul>
           <li nz-menu-item>权限列表</li>
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title><i class="anticon anticon-lock"></i>表单模块</span>
+        <ul>
+          <li nz-menu-item routerLink="/home/forms/reactive">响应式表单</li>
+          <li nz-menu-item routerLink="/home/forms/template">模板驱动表单</li>
         </ul>
       </li>
       <li nz-submenu>

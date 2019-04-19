@@ -8,6 +8,7 @@ import { MyResponse } from '../classes/my-response';
 import 'rxjs/Rx';
 import {Router} from '@angular/router';
 
+
 @Injectable()
 export class HttpService {
 
@@ -102,5 +103,4 @@ export class HttpService {
       })
       .map(resp => new MyResponse(resp));
   }
-
 }

@@ -15,7 +15,7 @@
           <input type="password" nz-input formControlName="password" placeholder="密码">
         </nz-input-group>
         <nz-form-explain *ngIf="loginForm.get('password').dirty && loginForm.get('password').hasError('required')">请输入密码</nz-form-explain>
-        <nz-form-explain *ngIf="loginForm.get('password').dirty && loginForm.get('password').hasError('pattern')">密码只能由数字、字母组成，长度为3-6位</nz-form-explain>
+        <nz-form-explain *ngIf="loginForm.get('password').dirty && loginForm.get('password').hasError('pattern')">密码只能由数字、字母组成，长度为3-18位</nz-form-explain>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>

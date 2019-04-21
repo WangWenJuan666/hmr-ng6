@@ -23,7 +23,8 @@ const appRoutes: Routes = [
       {
         path: 'dashBoard',
         loadChildren: './dash-board/dash-board.module#DashBoardModule',
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        // canLoad:守卫（在加载特性模块之前进行检查）
       },
       {
         path: 'employee',
@@ -33,6 +34,12 @@ const appRoutes: Routes = [
       {
         path: 'ticket',
         loadChildren: './ticket/ticket.module#TicketModule',
+        canActivate: [AuthGuard]
+      },
+      // forms
+      {
+        path: 'forms',
+        loadChildren: './forms/forms.module#FormModule',
         canActivate: [AuthGuard]
       }
     ]

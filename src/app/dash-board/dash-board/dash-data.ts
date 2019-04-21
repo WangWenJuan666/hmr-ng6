@@ -5,12 +5,6 @@ export class DashData {
     result: {
       week: [
         {
-          submitTime: '2019-04',
-          submit: 0,
-          start: 0,
-          complete: 0
-        },
-        {
           submitTime: '2019-05',
           submit: 0,
           start: 0,
@@ -66,15 +60,21 @@ export class DashData {
         },
         {
           submitTime: '2019-14',
-          submit: 22,
-          start: 11,
+          submit: 20,
+          start: 12,
           complete: 10
         },
         {
           submitTime: '2019-15',
-          submit: 3,
-          start: 0,
-          complete: 0
+          submit: 27,
+          start: 18,
+          complete: 9
+        },
+        {
+          submitTime: '2019-16',
+          submit: 30,
+          start: 2,
+          complete: 2
         }
       ],
       month: [
@@ -146,60 +146,12 @@ export class DashData {
         },
         {
           submitTime: '2019-04',
-          submit: 25,
-          start: 11,
-          complete: 10
+          submit: 77,
+          start: 32,
+          complete: 21
         }
       ],
       day: [
-        {
-          submitTime: '2019-03-11',
-          submit: 0,
-          start: 0,
-          complete: 0
-        },
-        {
-          submitTime: '2019-03-12',
-          submit: 0,
-          start: 0,
-          complete: 0
-        },
-        {
-          submitTime: '2019-03-13',
-          submit: 0,
-          start: 0,
-          complete: 0
-        },
-        {
-          submitTime: '2019-03-14',
-          submit: 0,
-          start: 0,
-          complete: 0
-        },
-        {
-          submitTime: '2019-03-15',
-          submit: 0,
-          start: 0,
-          complete: 0
-        },
-        {
-          submitTime: '2019-03-16',
-          submit: 0,
-          start: 0,
-          complete: 0
-        },
-        {
-          submitTime: '2019-03-17',
-          submit: 0,
-          start: 0,
-          complete: 0
-        },
-        {
-          submitTime: '2019-03-18',
-          submit: 0,
-          start: 0,
-          complete: 0
-        },
         {
           submitTime: '2019-03-19',
           submit: 0,
@@ -292,13 +244,13 @@ export class DashData {
         },
         {
           submitTime: '2019-04-03',
-          submit: 17,
-          start: 9,
+          submit: 16,
+          start: 10,
           complete: 8
         },
         {
           submitTime: '2019-04-04',
-          submit: 5,
+          submit: 4,
           start: 2,
           complete: 2
         },
@@ -323,56 +275,103 @@ export class DashData {
         {
           submitTime: '2019-04-08',
           submit: 3,
-          start: 0,
+          start: 3,
           complete: 0
         },
         {
           submitTime: '2019-04-09',
+          submit: 10,
+          start: 10,
+          complete: 8
+        },
+        {
+          submitTime: '2019-04-10',
           submit: 0,
           start: 0,
           complete: 0
+        },
+        {
+          submitTime: '2019-04-11',
+          submit: 13,
+          start: 4,
+          complete: 1
+        },
+        {
+          submitTime: '2019-04-12',
+          submit: 1,
+          start: 1,
+          complete: 0
+        },
+        {
+          submitTime: '2019-04-13',
+          submit: 0,
+          start: 0,
+          complete: 0
+        },
+        {
+          submitTime: '2019-04-14',
+          submit: 0,
+          start: 0,
+          complete: 0
+        },
+        {
+          submitTime: '2019-04-15',
+          submit: 11,
+          start: 0,
+          complete: 0
+        },
+        {
+          submitTime: '2019-04-16',
+          submit: 2,
+          start: 0,
+          complete: 0
+        },
+        {
+          submitTime: '2019-04-17',
+          submit: 17,
+          start: 2,
+          complete: 2
         }
       ]
     }
   };
-
   public static readonly countStatistics = {
-    'retCode': 1,
-    'retMsg': '获取成功',
-    'result': {
-      'yesterday': {
-        'submit': 0,
-        'start': 0,
-        'complete': 0
+    retCode: 1,
+    retMsg: '获取成功',
+    result: {
+      yesterday: {
+        submit: 0,
+        start: 0,
+        complete: 0
       },
-      'total': {
-        'submit': 35,
-        'pStart': 0.71,
-        'start': 25,
-        'pComplete': 0.54,
-        'complete': 19
+      total: {
+        submit: 35,
+        pStart: 0.71,
+        start: 25,
+        pComplete: 0.54,
+        complete: 19
       },
-      'today': {
-        'submit': 0,
-        'start': 0,
-        'complete': 0
+      today: {
+        submit: 0,
+        start: 0,
+        complete: 0
       },
-      'curMonth': {
-        'submit': 35,
-        'pStart': 0.71,
-        'start': 25,
-        'pComplete': 0.54,
-        'complete': 19
+      curMonth: {
+        submit: 35,
+        pStart: 0.71,
+        start: 25,
+        pComplete: 0.54,
+        complete: 19
       },
-      'curWeek': {
-        'submit': 13,
-        'pStart': 1.00,
-        'start': 13,
-        'pComplete': 0.62,
-        'complete': 8
+      curWeek: {
+        submit: 13,
+        pStart: 1.0,
+        start: 13,
+        pComplete: 0.62,
+        complete: 8
       }
     }
-  }
+  };
 
   public static readonly latestTickets = {
     retCode: 1,

@@ -13,7 +13,7 @@ export class HomeService {
 
   // 退出
   logout() {
-    // const token = localStorage.getItem('itcast-token')
+    // const token = localStorage.getItem('study-token')
 
     return this.http.delete(`${URL}/tokens`, {
       // headers: {

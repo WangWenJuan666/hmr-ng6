@@ -14,7 +14,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 @Component({
   selector: 'app-ticket-edit',
   templateUrl: './ticket-edit.component.html',
-  styleUrls: ['./ticket-edit.component.css']
+  styleUrls: ['./ticket-edit.component.scss']
 })
 export class TicketEditComponent implements OnInit {
   validateForm: FormGroup;

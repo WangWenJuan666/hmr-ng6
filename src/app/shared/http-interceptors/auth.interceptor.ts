@@ -27,7 +27,7 @@ export class AuthInterceptors implements HttpInterceptor {
 
     // 非登录请求，都要添加 Authorization
 
-    const token = localStorage.getItem('itcast-token')
+    const token = localStorage.getItem('study-token')
 
     const authReq = req.clone({
       headers: req.headers.set('Authorization', `Bearer ${token}`)
@@ -41,7 +41,7 @@ export class AuthInterceptors implements HttpInterceptor {
         error => {
           // console.log('捕获到一个错误：', error)
           if (error.status === 401) {
-            localStorage.removeItem('itcast-token')
+            localStorage.removeItem('study-token')
 
             this.router.navigate(['/login'])
           }

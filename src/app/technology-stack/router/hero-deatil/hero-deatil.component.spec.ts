@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Es6Component } from './es6.component';
+import { HeroDeatilComponent } from './hero-deatil.component';
 
-describe('Es6Component', () => {
-  let component: Es6Component;
-  let fixture: ComponentFixture<Es6Component>;
+describe('HeroDeatilComponent', () => {
+  let component: HeroDeatilComponent;
+  let fixture: ComponentFixture<HeroDeatilComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Es6Component ]
+      declarations: [ HeroDeatilComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Es6Component);
+    fixture = TestBed.createComponent(HeroDeatilComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -9,7 +9,7 @@ import {NzMessageService, NzModalService, UploadFile} from 'ng-zorro-antd';
 @Component({
   selector: 'app-ticket-detail',
   templateUrl: './ticket-detail.component.html',
-  styleUrls: ['./ticket-detail.component.css']
+  styleUrls: ['./ticket-detail.component.scss']
 })
 export class TicketDetailComponent implements OnInit {
 

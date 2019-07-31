@@ -6,7 +6,7 @@ import { NzModalService } from 'ng-zorro-antd';
 @Component({
   selector: 'app-ticket-list',
   templateUrl: './ticket-list.component.html',
-  styleUrls: ['./ticket-list.component.css'],
+  styleUrls: ['./ticket-list.component.scss'],
   providers: [DatePipe]
 })
 export class TicketListComponent implements OnInit {

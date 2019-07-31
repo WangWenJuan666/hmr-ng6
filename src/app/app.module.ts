@@ -24,9 +24,11 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { PipeModule } from './shared/pipe/pipe.module';
 import { LimitdigitsDirective } from './shared/directive/limitdigits.directive';
 
-import { CacheService } from './shared/service/cache.service';
+// 公共组件模块
+import { TechnologyStackModule } from './technology-stack/technology-stack.module'
 
 import { IdentityRevealedValidatorDirective } from './shared/directive/forbidden-name.directive';
+import { CacheService } from './shared/service/cache.service';
 registerLocaleData(zh)
 
 @NgModule({
@@ -40,7 +42,8 @@ registerLocaleData(zh)
     AppRoutingModule,
     ReactiveFormsModule,
     NgxEchartsModule,
-    PipeModule
+    PipeModule,
+    TechnologyStackModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: zh_CN },

@@ -20,7 +20,7 @@ import { FormArray } from '@angular/forms';
 @Component({
   selector: 'app-reactive',
   templateUrl: './reactive.component.html',
-  styleUrls: ['./reactive.component.css']
+  styleUrls: ['./reactive.component.scss']
 })
 export class ReactiveComponent implements OnInit {
   // 可以用 FormControl 的构造函数设置初始值，这个例子中它是空字符串。通过在你的组件类中创建这些控件，你可以直接对表单控件的状态进行监听、修改和校验。

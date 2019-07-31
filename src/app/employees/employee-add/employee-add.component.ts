@@ -22,7 +22,7 @@ const PHONE_NUMBER_REGEXP = /^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(
 @Component({
   selector: 'app-employee-add',
   templateUrl: './employee-add.component.html',
-  styleUrls: ['./employee-add.component.css']
+  styleUrls: ['./employee-add.component.scss']
 })
 export class EmployeeAddComponent implements OnInit {
   validateForm: FormGroup;

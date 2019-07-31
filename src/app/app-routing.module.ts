@@ -41,6 +41,12 @@ const appRoutes: Routes = [
         path: 'forms',
         loadChildren: './forms/forms.module#FormModule',
         canActivate: [AuthGuard]
+      },
+      // 技术栈
+      {
+        path: 'tech',
+        loadChildren: './technology-stack/technology-stack.module#TechnologyStackModule',
+        // canActivate: [AuthGuard]
       }
     ]
   },

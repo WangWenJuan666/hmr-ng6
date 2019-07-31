@@ -15,7 +15,7 @@ export class EmployeesService {
 
   // 获取数据
   fetchData(curPage: number, pageSize) {
-    // const token = localStorage.getItem('itcast-token')
+    // const token = localStorage.getItem('study-token')
     const employeeUrl = `${URL}/employees?_page=${curPage}&_limit=${pageSize}`
 
     return this.http.get<Employee[]>(employeeUrl, {
@@ -29,7 +29,7 @@ export class EmployeesService {
 
   // 删除数据
   delEmployee(id: number) {
-    // const token = localStorage.getItem('itcast-token')
+    // const token = localStorage.getItem('study-token')
 
     return this.http.delete(`${URL}/employees/${id}`, {
       // headers: {

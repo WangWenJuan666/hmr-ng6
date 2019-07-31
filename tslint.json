@@ -31,6 +31,12 @@
       true,
       140
     ],
+    "component-selector": [
+        false,
+        "element",
+        ["study", "ass"],
+        "kebab-case"
+      ],
     "member-access": false,
     "member-ordering": [
       true,

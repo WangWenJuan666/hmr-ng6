@@ -26,10 +26,11 @@ import { LimitdigitsDirective } from './shared/directive/limitdigits.directive';
 
 import { CacheService } from './shared/service/cache.service';
 
+import { IdentityRevealedValidatorDirective } from './shared/directive/forbidden-name.directive';
 registerLocaleData(zh)
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, LimitdigitsDirective ],
+  declarations: [AppComponent, LoginComponent, HomeComponent, LimitdigitsDirective,IdentityRevealedValidatorDirective ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ViewChild} from '@angular/core';
 
 // 导入服务
 import { EmployeesService } from '../employees.service';
@@ -8,6 +8,7 @@ import { Employee } from '../employee.type';
 import { HttpResponse } from '@angular/common/http';
 // 导入antd服务
 import { NzMessageService } from 'ng-zorro-antd';
+import {EmployeesEditComponent} from './../employees-edit/employees-edit.component'
 
 import {
   FormGroup,
@@ -15,7 +16,7 @@ import {
   Validators,
   FormBuilder
 } from '@angular/forms';
-
+// @ViewChild(EmployeesEditComponent) child;
 // 手机号码的正则
 const PHONE_NUMBER_REGEXP = /^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\d{8}$/;
 
@@ -33,6 +34,8 @@ export class EmployeeListComponent implements OnInit {
 
   // 数据
   employeesList: Employee[] = [];
+  //showDetail显示组件
+  public showDetail:boolean = false;
 
   // 控制编辑员工对话框
   isShowEmployeeModal = false;
@@ -44,6 +47,8 @@ export class EmployeeListComponent implements OnInit {
   pagesize = 5;
   total: number;
 
+  //选中的对象
+  public objdata :Object = {};
   // 是否加载中
   isLoading: boolean;
 
@@ -63,7 +68,7 @@ export class EmployeeListComponent implements OnInit {
   // 封装获取数据方法
   fetchData() {
     // console.log(this.curPage)
-    this.isLoading = true;
+    this.isLoading = false;
 
     this.employeesService
       .fetchData(this.curPage, this.pagesize)
@@ -71,7 +76,7 @@ export class EmployeeListComponent implements OnInit {
         // console.log(res)
         // console.log(typeof res.headers.get('X-Total-Count'))
 
-        // 总条数
+        // 
         this.total = +res.headers.get('X-Total-Count');
         this.employeesList = res.body;
         this.isLoading = false;
@@ -103,7 +108,7 @@ export class EmployeeListComponent implements OnInit {
 
   // 弹出修改员工对话框
   showEditEmployeeModal(id: number) {
-    this.isShowEmployeeModal = true;
+    // this.isShowEmployeeModal = true;
     this.editEmployeeId = id;
 
     // 根据id获取员工信息
@@ -178,7 +183,14 @@ export class EmployeeListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.showDetail = false
     this.fetchData();
+    this.employeesList =[
+      {id:1,name:'张三', gender:'1', phoneNumber:'12345', joinDate:12.23},
+      {id:2,name:'李四', gender:'1', phoneNumber:'12345', joinDate:12.23},
+      {id:3,name:'王五', gender:'1', phoneNumber:'12345', joinDate:12.23},
+      {id:4,name:'刘八', gender:'1', phoneNumber:'12345', joinDate:12.23},
+    ];
 
     this.employeeEditForm = this.fb.group({
       // 注意：如果有两个及其以上的验证规则，需要使用 [] 来包裹
@@ -188,6 +200,20 @@ export class EmployeeListComponent implements OnInit {
       phoneNumber: ['', Validators.pattern(PHONE_NUMBER_REGEXP)],
       joinDate: ['', this.joinDateValidate]
     });
+  }
+
+  //接受子组件的值
+  accept(msg:string) {
+    alert(msg);
+  }
+  
+  //getData
+  getData(obj){
+    this.objdata = obj;
+    this.showDetail = true;
+    console.log(this.objdata,'objdata');
+
+
   }
 
 }

@@ -1,0 +1,19 @@
+<h1 class="title">Angular Router</h1>
+<nav>
+    <a routerLink="./crisis-center" routerLinkActive="active">Crisis Center（危机中心）</a>
+    <a routerLink="./superheroes" routerLinkActive="active">Heroes（英雄中心）</a>
+    <a routerLink="/admin" routerLinkActive="active">Admin（管理区）</a>
+    <a routerLink="/login" routerLinkActive="active">Login</a>
+    <a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>
+    <p>危机中心用于维护要指派给英雄的危机列表。</p>
+    <p>英雄区用于维护管理局雇佣的英雄列表。</p>
+    <p>管理区会管理危机和英雄的列表。</p>
+    <p style='color: red'>假设本程序会用来帮助“英雄管理局”运行他们的业务。 英雄们需要找工作，而“英雄管理局”为他们寻找待解决的危机。</p>
+
+
+
+</nav>
+<div>
+    <router-outlet #routerOutlet="outlet"></router-outlet>
+</div>
+<router-outlet name="popup"></router-outlet>

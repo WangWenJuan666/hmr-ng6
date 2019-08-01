@@ -3,31 +3,21 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { Route } from '@angular/compiler/src/core';
 import { Es6IteratorAndForOfComponent } from './es6-iterator-and-for-of/es6-iterator-and-for-of.component';
-import { CrisisListComponent } from './router/crisis-list/crisis-list.component';
-import { HeroListComponent } from './router/hero-list/hero-list.component';
-import { PageNotFoundComponent } from './router/page-not-found/page-not-found.component';
-import { HeroDeatilComponent } from './router/hero-deatil/hero-deatil.component';
 //每个 Route 都会把一个 URL 的 path 映射到一个组件。 注意，path 不能以斜杠（/）开头。 路由器会为解析和构建最终的 URL，这样当你在应用的多个视图之间导航时，可以任意使用相对路径和绝对路径。
 const routes: Routes = [
     // 默认路径
     // { path: '', redirectTo: 'es6-string', pathMatch: '' },
     { path: 'iterator', component: Es6IteratorAndForOfComponent },
     // 路由
-    { path: 'crisis-center', component: CrisisListComponent },
-    { path: 'hero/:id', component: HeroDeatilComponent },
     {
-        path: 'heroes',
-        component: HeroListComponent,
-        data: { title: 'Heroes List' }// 一个 Observable，其中包含提供给路由的 data 对象。也包含由解析守卫（resolve guard）解析而来的值。
-        //第三个路由中的 data 属性用来存放于每个具体路由有关的任意信息。该数据可以被任何一个激活路由访问，并能用来保存诸如 页标题、面包屑以及其它静态只读数据
+        path: 'routers',
+        loadChildren: './routers/routers.module#RoutersModule'
     },
     {
-        path: '',
-        redirectTo: '/heroes',
+        path: 'routers',
+        redirectTo: 'routes',
         pathMatch: 'full'
-    },
-    { path: '**', component: PageNotFoundComponent }
-
+    }
 ]
 @NgModule({
     // imports: [
@@ -37,7 +27,7 @@ const routes: Routes = [
     //         ),
     //          // other imports here
 
-             
+
     // ],
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]

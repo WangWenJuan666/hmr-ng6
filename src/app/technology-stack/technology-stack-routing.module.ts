@@ -9,15 +9,10 @@ const routes: Routes = [
     // { path: '', redirectTo: 'es6-string', pathMatch: '' },
     { path: 'iterator', component: Es6IteratorAndForOfComponent },
     // 路由
-    {
-        path: 'routers',
-        loadChildren: './routers/routers.module#RoutersModule'
-    },
-    {
-        path: 'routers',
-        redirectTo: 'routes',
-        pathMatch: 'full'
-    }
+    // {
+        // path: 'app',
+        // loadChildren: './routers/routers.module#RoutersModule'
+    // },
 ]
 @NgModule({
     // imports: [

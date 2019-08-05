@@ -43,9 +43,15 @@ const appRoutes: Routes = [
         canActivate: [AuthGuard]
       },
       // 技术栈
+    //   {
+    //     path: 'tech',
+    //     loadChildren: './technology-stack/technology-stack.module#TechnologyStackModule',
+    //     // canActivate: [AuthGuard]
+    //   },
+      // 路由
       {
-        path: 'tech',
-        loadChildren: './technology-stack/technology-stack.module#TechnologyStackModule',
+        path: 'routers',
+        loadChildren: './routers/routers.module#RoutersModule',
         // canActivate: [AuthGuard]
       }
     ]
